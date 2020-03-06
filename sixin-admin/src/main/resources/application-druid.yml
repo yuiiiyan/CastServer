@@ -12,14 +12,11 @@ spring:
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
-                enabled: false
-                url: 
-                username: 
-                password:
-#            test:
-#                url: jdbc:mysql://localhost:3306/shuofang?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-#                username: root
-#                password: txy813
+                enabled: true
+                url: jdbc:mysql://localhost:3306/shuofang?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+                username: root
+                password: txy813
+
             # 初始连接数
             initialSize: 5
             # 最小连接池数量
