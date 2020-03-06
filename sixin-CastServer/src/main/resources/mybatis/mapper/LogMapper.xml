@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LogMapper">
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		logid,
+		clientid,
+		logtype,
+		functions,
+		logtime,
+		remark
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{logid},
+		#{clientid},
+		#{logtype},
+		#{functions},
+		#{logtime},
+		#{remark}
+	</sql>
+	
+	<!--表名 -->
+	<sql id="tableName">
+		log
+	</sql>
+	
+	<sql id="client">
+		client
+	</sql>
+	
+	<!-- 查找全部日志列表 -->
+	<select id="getAlllistPage" parameterType="page" resultType="Log">
+		select
+			<include refid="Field"></include>
+		from 
+			<include refid="tableName"></include>
+		order by logtime desc
+	</select>
+	<!-- 通过用户id和时间查找日志列表 -->
+	<select id="getLoglistPage" parameterType="page" resultType="pd">
+		select
+			logid,
+			l.clientid as clientid,
+			u.clientname,
+			logtype,
+			functions,
+			logtime,
+			l.remark
+		from 
+		<include refid="tableName"></include> l,<include refid="client"></include> u
+		where l.clientid=u.clientid
+			and u.clientid = #{pd.clientid}
+		order by logtime desc
+	</select>
+	<!-- 获取用户通过与未通过记录 -->
+	<select id="getUserPassNum" parameterType="page" resultType="pd">
+		select
+			count(case when clientid >= 0 then true else NULL end) as passCount,
+			count(case when clientid <![CDATA[<]]> 0 then true else NULL end) as noPassCount
+		from 
+			<include refid="tableName"></include>
+	</select>
+	<!-- 查找所有用户日志列表 -->
+	<select id="getUserlistPage" parameterType="page" resultType="pd">
+		select
+			logid,
+			l.clientid as clientid,
+			u.clientname,
+			logtype,
+			functions,
+			logtime,
+			l.remark
+		from
+		<include refid="tableName"></include> l,<include refid="client"></include> u
+		where l.clientid=u.clientid
+		order by logtime desc
+	</select>
+	<!-- 添加 -->
+	<insert id="saveLog" parameterType="Log">
+		insert into 
+		<include refid="tableName"></include>
+		(
+		clientid,
+		logtype,
+		functions,
+		logtime,
+		remark
+		) values (
+		#{clientid},
+		#{logtype},
+		#{functions},
+		#{logtime},
+		#{remark}
+		)
+	</insert>
+</mapper>

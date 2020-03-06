@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TorrentMapper">
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		IMEI,
+		pow1,
+		grouppow,
+		outv1,
+		outv2,
+		v24,
+		v28,
+		extendpow,
+		solarpow,
+		charge,
+		work,
+		time,
+		IP
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{IMEI},
+		#{pow1},
+		#{grouppow},
+		#{outv1},
+		#{outv2},
+		#{v24},
+		#{v28},
+		#{extendpow},
+		#{solarpow},
+		#{charge},
+		#{work},
+		#{time},
+		#{IP}
+	</sql>
+	<!--表名 -->
+	<sql id="tableName">
+		torrent
+	</sql>
+	
+	<!-- 查找全部会话列表 -->
+	<select id="getAlllistPage" parameterType="page" resultType="Torrent">
+		select
+			<include refid="Field"></include>
+		from 
+			<include refid="tableName"></include>
+		order by dataid desc
+	</select>
+	<!-- 存储会话列表 -->
+	<insert id="saveTorrent" parameterType="Torrent">
+		insert into 
+		<include refid="tableName"></include>
+		(
+			<include refid="Field"></include>
+		) values (
+			<include refid="FieldValue"></include>
+		)
+	</insert>
+</mapper>
