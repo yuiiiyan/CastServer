@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixin.castserver.mapper.logMapper">
+    
+    <resultMap type="log" id="logResult">
+        <result property="logid"    column="logid"    />
+        <result property="clientid"    column="clientid"    />
+        <result property="logtype"    column="logtype"    />
+        <result property="functions"    column="functions"    />
+        <result property="logtime"    column="logtime"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectlogVo">
+        select logid, clientid, logtype, functions, logtime, remark from shuofang-log
+    </sql>
+
+    <select id="selectlogList" parameterType="log" resultMap="logResult">
+        <include refid="selectlogVo"/>
+        <where>  
+            <if test="clientid != null "> and clientid = #{clientid}</if>
+            <if test="logtype != null  and logtype != ''"> and logtype = #{logtype}</if>
+            <if test="functions != null  and functions != ''"> and functions = #{functions}</if>
+            <if test="logtime != null "> and logtime = #{logtime}</if>
+        </where>
+    </select>
+    
+    <select id="selectlogById" parameterType="Long" resultMap="logResult">
+        <include refid="selectlogVo"/>
+        where logid = #{logid}
+    </select>
+        
+    <insert id="insertlog" parameterType="log" useGeneratedKeys="true" keyProperty="logid">
+        insert into shuofang-log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clientid != null ">clientid,</if>
+            <if test="logtype != null  and logtype != ''">logtype,</if>
+            <if test="functions != null  and functions != ''">functions,</if>
+            <if test="logtime != null ">logtime,</if>
+            <if test="remark != null  and remark != ''">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="clientid != null ">#{clientid},</if>
+            <if test="logtype != null  and logtype != ''">#{logtype},</if>
+            <if test="functions != null  and functions != ''">#{functions},</if>
+            <if test="logtime != null ">#{logtime},</if>
+            <if test="remark != null  and remark != ''">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updatelog" parameterType="log">
+        update shuofang-log
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clientid != null ">clientid = #{clientid},</if>
+            <if test="logtype != null  and logtype != ''">logtype = #{logtype},</if>
+            <if test="functions != null  and functions != ''">functions = #{functions},</if>
+            <if test="logtime != null ">logtime = #{logtime},</if>
+            <if test="remark != null  and remark != ''">remark = #{remark},</if>
+        </trim>
+        where logid = #{logid}
+    </update>
+
+    <delete id="deletelogById" parameterType="Long">
+        delete from shuofang-log where logid = #{logid}
+    </delete>
+
+    <delete id="deletelogByIds" parameterType="String">
+        delete from shuofang-log where logid in 
+        <foreach item="logid" collection="array" open="(" separator="," close=")">
+            #{logid}
+        </foreach>
+    </delete>
+    
+</mapper>

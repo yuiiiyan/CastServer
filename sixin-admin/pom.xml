@@ -78,7 +78,7 @@
         </dependency>
         <dependency>
             <groupId>com.sixin</groupId>
-            <artifactId>sixin-CastServer</artifactId>
+            <artifactId>sixin-castserver</artifactId>
             <version>4.1.0</version>
             <scope>compile</scope>
         </dependency>

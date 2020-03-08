@@ -230,7 +230,8 @@
         <module>sixin-common</module>
         <module>sixin-CastServer</module>
 		<module>sixin-CastServer</module>
-	</modules>
+        <module>sixin-castserver</module>
+    </modules>
     <packaging>pom</packaging>
 
 

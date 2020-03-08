@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixin.castserver.mapper.clientMapper">
+    
+    <resultMap type="client" id="clientResult">
+        <result property="imei"    column="IMEI"    />
+        <result property="clientid"    column="clientid"    />
+        <result property="clientname"    column="clientname"    />
+        <result property="clientinfo"    column="clientinfo"    />
+        <result property="creatdate"    column="creatdate"    />
+        <result property="finallogindate"    column="finallogindate"    />
+        <result property="note"    column="note"    />
+        <result property="isuse"    column="isuse"    />
+        <result property="pow1"    column="pow1"    />
+        <result property="grouppow"    column="grouppow"    />
+        <result property="outv1"    column="outv1"    />
+        <result property="outv2"    column="outv2"    />
+        <result property="v24"    column="v24"    />
+        <result property="v28"    column="v28"    />
+        <result property="extendpow"    column="extendpow"    />
+        <result property="solarpow"    column="solarpow"    />
+        <result property="charge"    column="charge"    />
+        <result property="work"    column="work"    />
+        <result property="ip"    column="IP"    />
+        <result property="isregister"    column="isregister"    />
+    </resultMap>
+
+    <sql id="selectclientVo">
+        select IMEI, clientid, clientname, clientinfo, creatdate, finallogindate, note, isuse, pow1, grouppow, outv1, outv2, v24, v28, extendpow, solarpow, charge, work, IP, isregister from client
+    </sql>
+
+    <select id="selectclientList" parameterType="client" resultMap="clientResult">
+        <include refid="selectclientVo"/>
+        <where>  
+            <if test="clientid != null "> and clientid like concat('%', #{clientid}, '%')</if>
+            <if test="clientname != null  and clientname != ''"> and clientname like concat('%', #{clientname}, '%')</if>
+            <if test="creatdate != null "> and creatdate = #{creatdate}</if>
+            <if test="outv1 != null  and outv1 != ''"> and outv1 = #{outv1}</if>
+            <if test="outv2 != null  and outv2 != ''"> and outv2 = #{outv2}</if>
+            <if test="v24 != null  and v24 != ''"> and v24 = #{v24}</if>
+            <if test="v28 != null  and v28 != ''"> and v28 = #{v28}</if>
+            <if test="extendpow != null  and extendpow != ''"> and extendpow = #{extendpow}</if>
+            <if test="solarpow != null  and solarpow != ''"> and solarpow = #{solarpow}</if>
+            <if test="charge != null  and charge != ''"> and charge = #{charge}</if>
+            <if test="work != null  and work != ''"> and work = #{work}</if>
+            <if test="ip != null  and ip != ''"> and IP = #{ip}</if>
+            <if test="isregister != null "> and isregister = #{isregister}</if>
+        </where>
+    </select>
+    
+    <select id="selectclientById" parameterType="String" resultMap="clientResult">
+        <include refid="selectclientVo"/>
+        where IMEI = #{imei}
+    </select>
+        
+    <insert id="insertclient" parameterType="client">
+        insert into client
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="imei != null  and imei != ''">IMEI,</if>
+            <if test="clientid != null ">clientid,</if>
+            <if test="clientname != null  and clientname != ''">clientname,</if>
+            <if test="clientinfo != null  and clientinfo != ''">clientinfo,</if>
+            <if test="creatdate != null ">creatdate,</if>
+            <if test="finallogindate != null ">finallogindate,</if>
+            <if test="note != null  and note != ''">note,</if>
+            <if test="isuse != null ">isuse,</if>
+            <if test="pow1 != null  and pow1 != ''">pow1,</if>
+            <if test="grouppow != null  and grouppow != ''">grouppow,</if>
+            <if test="outv1 != null  and outv1 != ''">outv1,</if>
+            <if test="outv2 != null  and outv2 != ''">outv2,</if>
+            <if test="v24 != null  and v24 != ''">v24,</if>
+            <if test="v28 != null  and v28 != ''">v28,</if>
+            <if test="extendpow != null  and extendpow != ''">extendpow,</if>
+            <if test="solarpow != null  and solarpow != ''">solarpow,</if>
+            <if test="charge != null  and charge != ''">charge,</if>
+            <if test="work != null  and work != ''">work,</if>
+            <if test="ip != null  and ip != ''">IP,</if>
+            <if test="isregister != null ">isregister,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="imei != null  and imei != ''">#{imei},</if>
+            <if test="clientid != null ">#{clientid},</if>
+            <if test="clientname != null  and clientname != ''">#{clientname},</if>
+            <if test="clientinfo != null  and clientinfo != ''">#{clientinfo},</if>
+            <if test="creatdate != null ">#{creatdate},</if>
+            <if test="finallogindate != null ">#{finallogindate},</if>
+            <if test="note != null  and note != ''">#{note},</if>
+            <if test="isuse != null ">#{isuse},</if>
+            <if test="pow1 != null  and pow1 != ''">#{pow1},</if>
+            <if test="grouppow != null  and grouppow != ''">#{grouppow},</if>
+            <if test="outv1 != null  and outv1 != ''">#{outv1},</if>
+            <if test="outv2 != null  and outv2 != ''">#{outv2},</if>
+            <if test="v24 != null  and v24 != ''">#{v24},</if>
+            <if test="v28 != null  and v28 != ''">#{v28},</if>
+            <if test="extendpow != null  and extendpow != ''">#{extendpow},</if>
+            <if test="solarpow != null  and solarpow != ''">#{solarpow},</if>
+            <if test="charge != null  and charge != ''">#{charge},</if>
+            <if test="work != null  and work != ''">#{work},</if>
+            <if test="ip != null  and ip != ''">#{ip},</if>
+            <if test="isregister != null ">#{isregister},</if>
+         </trim>
+    </insert>
+
+    <update id="updateclient" parameterType="client">
+        update client
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clientid != null ">clientid = #{clientid},</if>
+            <if test="clientname != null  and clientname != ''">clientname = #{clientname},</if>
+            <if test="clientinfo != null  and clientinfo != ''">clientinfo = #{clientinfo},</if>
+            <if test="creatdate != null ">creatdate = #{creatdate},</if>
+            <if test="finallogindate != null ">finallogindate = #{finallogindate},</if>
+            <if test="note != null  and note != ''">note = #{note},</if>
+            <if test="isuse != null ">isuse = #{isuse},</if>
+            <if test="pow1 != null  and pow1 != ''">pow1 = #{pow1},</if>
+            <if test="grouppow != null  and grouppow != ''">grouppow = #{grouppow},</if>
+            <if test="outv1 != null  and outv1 != ''">outv1 = #{outv1},</if>
+            <if test="outv2 != null  and outv2 != ''">outv2 = #{outv2},</if>
+            <if test="v24 != null  and v24 != ''">v24 = #{v24},</if>
+            <if test="v28 != null  and v28 != ''">v28 = #{v28},</if>
+            <if test="extendpow != null  and extendpow != ''">extendpow = #{extendpow},</if>
+            <if test="solarpow != null  and solarpow != ''">solarpow = #{solarpow},</if>
+            <if test="charge != null  and charge != ''">charge = #{charge},</if>
+            <if test="work != null  and work != ''">work = #{work},</if>
+            <if test="ip != null  and ip != ''">IP = #{ip},</if>
+            <if test="isregister != null ">isregister = #{isregister},</if>
+        </trim>
+        where IMEI = #{imei}
+    </update>
+
+    <delete id="deleteclientById" parameterType="String">
+        delete from client where IMEI = #{imei}
+    </delete>
+
+    <delete id="deleteclientByIds" parameterType="String">
+        delete from client where IMEI in 
+        <foreach item="imei" collection="array" open="(" separator="," close=")">
+            #{imei}
+        </foreach>
+    </delete>
+    
+</mapper>
