@@ -26,9 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="ip"    column="IP"    />
         <result property="isregister"    column="isregister"    />
     </resultMap>
-
     <sql id="selectclientVo">
-        select IMEI, clientid, clientname, clientinfo, creatdate, finallogindate, note, isuse, pow1, grouppow, outv1, outv2, v24, v28, extendpow, solarpow, charge, work, IP, isregister from client
+        select IMEI, clientid, clientname, clientinfo, creatdate, finallogindate, note, isuse, pow1, grouppow, outv1, outv2, v24, v28, extendpow, solarpow, charge, work, IP, isregister from shuofang.client
     </sql>
 
     <select id="selectclientList" parameterType="client" resultMap="clientResult">

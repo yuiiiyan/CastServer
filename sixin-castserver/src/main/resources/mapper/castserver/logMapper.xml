@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectlogVo">
-        select logid, clientid, logtype, functions, logtime, remark from shuofang-log
+        select logid, clientid, logtype, functions, logtime, remark from shuofang.log
     </sql>
 
     <select id="selectlogList" parameterType="log" resultMap="logResult">
@@ -72,5 +72,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{logid}
         </foreach>
     </delete>
-    
 </mapper>

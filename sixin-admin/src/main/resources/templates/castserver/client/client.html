@@ -24,46 +24,46 @@
                                 <span>-</span>
                                 <input type="text" class="time-input" id="endTime" placeholder="结束时间" name="params[endCreatdate]"/>
                             </li>
-                            <li>
-                                <p>18V1输出电压：</p>
-                                <input type="text" name="outv1"/>
-                            </li>
-                            <li>
-                                <p>18V2输出电压：</p>
-                                <input type="text" name="outv2"/>
-                            </li>
-                            <li>
-                                <p>24V输出电压：</p>
-                                <input type="text" name="v24"/>
-                            </li>
-                            <li>
-                                <p>28V输出电压：</p>
-                                <input type="text" name="v28"/>
-                            </li>
-                            <li>
-                                <p>外部电源电压：</p>
-                                <input type="text" name="extendpow"/>
-                            </li>
-                            <li>
-                                <p>太阳能电压：</p>
-                                <input type="text" name="solarpow"/>
-                            </li>
-                            <li>
-                                <p>充电状况：</p>
-                                <input type="text" name="charge"/>
-                            </li>
-                            <li>
-                                <p>工作状况：</p>
-                                <input type="text" name="work"/>
-                            </li>
-                            <li>
-                                <p>IP地址：</p>
-                                <input type="text" name="ip"/>
-                            </li>
-                            <li>
-                                <p>是否登记：</p>
-                                <input type="text" name="isregister"/>
-                            </li>
+<!--                            <li>-->
+<!--                                <p>18V1输出电压：</p>-->
+<!--                                <input type="text" name="outv1"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>18V2输出电压：</p>-->
+<!--                                <input type="text" name="outv2"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>24V输出电压：</p>-->
+<!--                                <input type="text" name="v24"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>28V输出电压：</p>-->
+<!--                                <input type="text" name="v28"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>外部电源电压：</p>-->
+<!--                                <input type="text" name="extendpow"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>太阳能电压：</p>-->
+<!--                                <input type="text" name="solarpow"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>充电状况：</p>-->
+<!--                                <input type="text" name="charge"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>工作状况：</p>-->
+<!--                                <input type="text" name="work"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>IP地址：</p>-->
+<!--                                <input type="text" name="ip"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <p>是否登记：</p>-->
+<!--                                <input type="text" name="isregister"/>-->
+<!--                            </li>-->
                             <li>
                                 <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
                                 <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -122,26 +122,14 @@
                     field : 'clientname', 
                     title : '名称'
                 },
-                {
-                    field : 'clientinfo', 
-                    title : 'null'
-                },
-                {
-                    field : 'creatdate', 
-                    title : '记录时间'
-                },
-                {
-                    field : 'finallogindate', 
-                    title : '最后登录时间'
-                },
-                {
-                    field : 'note', 
-                    title : '备注'
-                },
-                {
-                    field : 'isuse', 
-                    title : '是否启用'
-                },
+                // {
+                //     field : 'clientinfo',
+                //     title : 'null'
+                // },
+                // {
+                //     field : 'finallogindate',
+                //     title : '最后登录时间'
+                // },
                 {
                     field : 'pow1', 
                     title : '电池1电压'
@@ -187,9 +175,21 @@
                     title : 'IP地址'
                 },
                 {
-                    field : 'isregister', 
-                    title : '是否登记'
+                    field : 'creatdate',
+                    title : '记录时间'
                 },
+                {
+                    field : 'note',
+                    title : '备注'
+                },
+                {
+                    field : 'isuse',
+                    title : '是否启用'
+                },
+                // {
+                //     field : 'isregister',
+                //     title : '是否登记'
+                // },
                 {
                     title: '操作',
                     align: 'center',
