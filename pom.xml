@@ -228,17 +228,10 @@
 		<module>sixin-quartz</module>
 		<module>sixin-generator</module>
         <module>sixin-common</module>
-        <module>sixin-CastServer</module>
-		<module>sixin-CastServer</module>
-	</modules>
+        <module>sixin-castserver</module>
+    </modules>
     <packaging>pom</packaging>
 
-
-	<dependencies>
-
-		 
-
-	</dependencies>
 
 	<build>
         <plugins>

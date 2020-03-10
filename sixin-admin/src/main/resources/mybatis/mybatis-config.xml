@@ -12,20 +12,4 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- <setting name="mapUnderscoreToCamelCase" value="true"/>  驼峰式命名 -->
 	</settings>
 
-<!--	<typeAliases>-->
-<!--		<typeAlias type="com.sixin.util.PageData" alias="pd"/>-->
-<!--		<typeAlias type="com.sixin.entity.Client" alias="Client"/>-->
-<!--		<typeAlias type="com.sixin.entity.Log" alias="Log"/>-->
-<!--		<typeAlias type="com.sixin.entity.Session" alias="Session"/>-->
-<!--		<typeAlias type="com.sixin.entity.Torrent" alias="Torrent"/>-->
-<!--		&lt;!&ndash; 分页 &ndash;&gt;-->
-<!--		<typeAlias type="com.sixin.entity.Page" alias="Page"/>-->
-<!--	</typeAliases>-->
-<!--	<plugins>-->
-<!--		<plugin interceptor="com.sixin.plugin.PagePlugin">-->
-<!--			<property name="dialect" value="mysql"/>-->
-<!--			<property name="pageSqlId" value=".*Page.*"/>-->
-<!--		</plugin>-->
-<!--	</plugins>-->
-
 </configuration>
